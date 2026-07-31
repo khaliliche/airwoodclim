@@ -24,14 +24,6 @@
                 <input type="number" name="quantity" value="1" min="1" class="form-control" style="width: 90px;">
                 <button type="submit" class="btn btn-awc text-white btn-lg">Ajouter au panier</button>
             </form>
-        </div>
-    </div>
-</div>
-<form action="{% url 'cart:cart_add' product.id %}" method="post" class="d-flex align-items-center gap-2">
-                {% csrf_token %}
-                <input type="number" name="quantity" value="1" min="1" class="form-control" style="width: 90px;">
-                <button type="submit" class="btn btn-awc text-white btn-lg">Ajouter au panier</button>
-            </form>
 
             {% if product.category.type == 'service' %}
             <a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Salut, je veux des informations sur une installation : '|add:product.name|urlencode }}"
@@ -40,4 +32,7 @@
                 💬 Demander via WhatsApp
             </a>
             {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
