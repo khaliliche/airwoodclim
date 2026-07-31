@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Air Wood Clim — Installation & Réparation de Climatiseurs à Casablanca et Rabat{% endblock %}
+{% block meta_description %}Vente et installation de climatiseurs Carrier, LG, Samsung, Gree à Casablanca et Rabat. Devis gratuit, intervention rapide, techniciens certifiés. Commandez via WhatsApp.{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-inner">
+            <span class="eyebrow">Casablanca &amp; Rabat</span>
+            <h1>Le bon climatiseur, installé le jour même par des pros.</h1>
+            <p class="lead">Choisissez votre climatiseur, ajoutez un service d'installation, et commandez directement via WhatsApp — sans compte, sans paiement en ligne compliqué.</p>
+
+            <div class="hero-badges">
+                <span class="hero-badge"><i class="fas fa-shield-halved me-1"></i> Techniciens certifiés</span>
+                <span class="hero-badge"><i class="fas fa-bolt me-1"></i> Intervention rapide</span>
+                <span class="hero-badge"><i class="fas fa-file-invoice me-1"></i> Devis gratuit</span>
+            </div>
+
+            <a href="{% url 'catalog:climatiseurs' %}" class="btn btn-cta btn-lg me-2">Voir les climatiseurs</a>
+            <a href="{% url 'catalog:services' %}" class="btn btn-outline-light btn-lg">Voir les services</a>
+        </div>
+    </div>
+</section>
+
+<!-- POPULAR PRODUCTS -->
+<div class="container my-5 py-3">
+    <div class="section-head">
+        <span class="eyebrow">Catalogue</span>
+        <h2>Nos climatiseurs populaires</h2>
+        <div class="rule"></div>
+    </div>
+    <div class="row g-4">
+        {% for product in climatiseurs %}
+        <div class="col-6 col-md-3">
+            <div class="card product-card">
+                <div class="store-img-wrap">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="Climatiseur {{ product.name }} - Air Wood Clim">
+                    {% else %}
+                    <img src="{% static 'images/logo.png' %}" alt="{{ product.name }}" class="p-4">
+                    {% endif %}
+                    <span class="badge-category">Climatiseur</span>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">{{ product.name }}</h6>
+                    {% if product.brand or product.capacity_btu %}
+                    <div class="nameplate">
+                        {% if product.brand %}<span>{{ product.brand }}</span>{% endif %}
+                        {% if product.capacity_btu %}<span>{{ product.capacity_btu }} BTU</span>{% endif %}
+                    </div>
+                    {% endif %}
+                    <p class="price-tag mb-1">{{ product.price }} DH</p>
+                    <a href="{{ product.get_absolute_url }}" class="btn btn-awc btn-sm w-100 text-white">Voir le produit</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">Aucun climatiseur pour le moment.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- WHY US -->
+<section class="section-alt py-5">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+                <span class="eyebrow">Pourquoi nous choisir</span>
+                <h2>Un service pensé pour le climat marocain</h2>
+                <p class="text-muted">Entre chaleur d'été et pics de demande, on garde des délais courts et des installations propres, garanties.</p>
+            </div>
+            <div class="col-lg-7">
+                <div class="why-item">
+                    <i class="fas fa-user-gear"></i>
+                    <div><strong>Techniciens certifiés</strong><p class="text-muted mb-0">Installation, recharge de gaz et dépannage réalisés par des professionnels expérimentés.</p></div>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-clock"></i>
+                    <div><strong>Intervention rapide</strong><p class="text-muted mb-0">Disponibles 7j/7 à Casablanca et Rabat, avec des créneaux d'installation flexibles.</p></div>
+                </div>
+                <div class="why-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <div><strong>Commande simple via WhatsApp</strong><p class="text-muted mb-0">Pas de compte à créer : on valide votre devis et votre rendez-vous directement en message.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<div class="container my-5 py-3">
+    <div class="section-head">
+        <span class="eyebrow">Installation</span>
+        <h2>Nos services d'installation</h2>
+        <div class="rule"></div>
+    </div>
+    <div class="row g-4">
+        {% for product in services %}
+        <div class="col-6 col-md-3">
+            <div class="card product-card">
+                <div class="store-img-wrap">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="Service {{ product.name }} - Air Wood Clim">
+                    {% else %}
+                    <img src="{% static 'images/logo.png' %}" alt="{{ product.name }}" class="p-4">
+                    {% endif %}
+                    <span class="badge-category">Service</span>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">{{ product.name }}</h6>
+                    <p class="price-tag mb-1">{{ product.price }} DH</p>
+                    <a href="{{ product.get_absolute_url }}" class="btn btn-outline-awc btn-sm w-100">Voir le service</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">Aucun service pour le moment.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- BRANDS -->
+<section class="section-alt py-5">
+    <div class="container text-center">
+        <span class="eyebrow">Marques partenaires</span>
+        <h2 class="mb-4">Les marques que nous installons</h2>
+        <div class="brands-strip">
+            <span class="brand-pill">Carrier</span>
+            <span class="brand-pill">LG</span>
+            <span class="brand-pill">Samsung</span>
+            <span class="brand-pill">Hisense</span>
+            <span class="brand-pill">Gree</span>
+            <span class="brand-pill">Midea</span>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="py-5">
+    <div class="container text-center">
+        <h2>Besoin d'un devis pour votre climatiseur ?</h2>
+        <p class="text-muted mb-4">Réponse rapide sur WhatsApp, sans engagement.</p>
+        <a href="https://wa.me/{{ whatsapp_number }}" target="_blank" class="btn btn-whatsapp btn-lg">
+            <i class="fab fa-whatsapp me-1"></i> Discuter sur WhatsApp
+        </a>
+    </div>
+</section>
+
+{% endblock %}

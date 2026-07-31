@@ -1,0 +1,406 @@
+/* =========================================================
+   AIR WOOD CLIM — Design Tokens
+   ========================================================= */
+:root {
+  --navy: #0F2A47;
+  --navy-deep: #0A1D33;
+  --cyan: #2FBFD9;
+  --cyan-soft: #E4F7FA;
+  --orange: #FF6B35;
+  --orange-dark: #E4551F;
+  --bg: #F4F8FA;
+  --ink: #1C2530;
+  --slate: #64748B;
+  --line: #E1E8EE;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(15, 42, 71, 0.10);
+  --shadow-lg: 0 20px 50px rgba(15, 42, 71, 0.18);
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  margin: 0;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+h1, h2, h3, h4, .display {
+  font-family: var(--font-display);
+  color: var(--navy);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.mono { font-family: var(--font-mono); }
+
+.container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+/* ==========================
+   NAVBAR
+========================== */
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 0 rgba(15,42,71,0.03);
+}
+
+.brand-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.02em;
+  font-size: 1.05rem;
+}
+
+.navbar .nav-link {
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color .2s;
+  position: relative;
+}
+
+.navbar .nav-link:hover { color: var(--cyan); }
+
+.navbar .nav-link.cta-link {
+  background: var(--orange);
+  color: #fff !important;
+  padding: 8px 18px !important;
+  border-radius: 999px;
+}
+.navbar .nav-link.cta-link:hover { background: var(--orange-dark); }
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -14px;
+  background: var(--orange);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.65rem;
+  padding: 3px 6px;
+  font-family: var(--font-mono);
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+.btn-awc {
+  background: var(--navy);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 10px 20px;
+  transition: transform .15s, background .2s;
+}
+.btn-awc:hover { background: var(--navy-deep); color: #fff; transform: translateY(-1px); }
+
+.btn-outline-awc {
+  border: 1.5px solid var(--navy);
+  color: var(--navy);
+  font-weight: 600;
+  border-radius: 10px;
+  background: transparent;
+  transition: .2s;
+}
+.btn-outline-awc:hover { background: var(--navy); color: #fff; }
+
+.btn-cta {
+  background: var(--orange);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 12px 24px;
+  transition: transform .15s, background .2s;
+}
+.btn-cta:hover { background: var(--orange-dark); color: #fff; transform: translateY(-1px); }
+
+.btn-whatsapp {
+  background: #25D366;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: .2s;
+}
+.btn-whatsapp:hover { background: #1FA855; color: #fff; }
+
+/* ==========================
+   HERO — split-unit motif
+========================== */
+.hero-section {
+  position: relative;
+  background: var(--navy);
+  color: #fff;
+  padding: 100px 0 140px;
+  overflow: hidden;
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, var(--navy) 45%, var(--cyan) 130%);
+  clip-path: polygon(0 0, 100% 0, 100% 55%, 0 100%);
+  opacity: 0.9;
+}
+
+.hero-inner { position: relative; z-index: 2; max-width: 640px; }
+
+.hero-section .eyebrow { color: var(--cyan); }
+
+.hero-section h1 {
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.hero-section p.lead {
+  color: #D7E7EE;
+  font-size: 1.1rem;
+  max-width: 520px;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 28px 0 32px;
+}
+
+.hero-badge {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+
+/* ==========================
+   SECTION TITLES
+========================== */
+.section-head { margin-bottom: 32px; }
+.section-head h2 { font-size: 1.8rem; }
+.section-head .rule {
+  width: 60px;
+  height: 3px;
+  background: var(--orange);
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.section-alt { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+/* ==========================
+   PRODUCT / STORE CARDS
+========================== */
+.product-card, .store-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .3s, box-shadow .3s;
+  height: 100%;
+}
+
+.product-card:hover, .store-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.store-img-wrap {
+  position: relative;
+  height: 220px;
+  background: var(--cyan-soft);
+  overflow: hidden;
+}
+
+.store-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+}
+
+.store-card:hover img { transform: scale(1.06); }
+
+.badge-category {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--navy);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+
+.card-body { padding: 20px; }
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  min-height: 50px;
+  color: var(--navy);
+}
+
+/* nameplate strip — mimics an HVAC spec label */
+.nameplate {
+  display: flex;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--slate);
+  border-top: 1px dashed var(--line);
+  border-bottom: 1px dashed var(--line);
+  padding: 8px 0;
+  margin: 10px 0;
+}
+
+.price-tag {
+  font-family: var(--font-mono);
+  color: var(--orange);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.card-body .btn { border-radius: 10px; margin-bottom: 8px; }
+
+/* ==========================
+   WHY US
+========================== */
+.why-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+.why-item i {
+  color: var(--cyan);
+  font-size: 1.4rem;
+  width: 40px;
+}
+
+/* ==========================
+   BRANDS STRIP
+========================== */
+.brands-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+.brand-pill {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 999px;
+  color: var(--navy);
+  font-weight: 600;
+}
+
+/* ==========================
+   FOOTER (single, clean)
+========================== */
+.footer-brand { background: var(--navy-deep); color: #fff; border-top: 4px solid var(--orange); }
+.footer-brand p { color: #C6D3E0; }
+.footer-brand h3, .footer-brand h4 { color: #fff; }
+
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 12px; color: #C6D3E0; }
+.footer-links a { color: #C6D3E0; transition: .2s; }
+.footer-links a:hover { color: var(--cyan); }
+
+.footer-social { display: flex; gap: 14px; }
+.footer-social a {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; transition: .2s;
+}
+.footer-social a:hover { background: var(--orange); }
+
+.footer-divider { border-color: rgba(255,255,255,0.12); margin: 36px 0 20px; }
+
+/* ==========================
+   WHATSAPP FLOATING BUTTON
+========================== */
+.whatsapp-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(0,0,0,.25);
+  z-index: 9999;
+  animation: pulse 2.2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37,211,102,.5); }
+  70% { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+/* ==========================
+   FILTER PILLS
+========================== */
+.filter-pill { border-radius: 999px !important; }
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 992px) {
+  .store-img-wrap { height: 200px; }
+  .hero-section { padding: 80px 0 110px; }
+}
+
+@media (max-width: 768px) {
+  .hero-section { padding: 64px 0 90px; }
+  .hero-section::after { clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%); }
+  .store-img-wrap { height: 180px; }
+  .card-title { font-size: 1rem; min-height: auto; }
+}
+
+@media (max-width: 576px) {
+  .hero-section h1 { font-size: 1.7rem; }
+  .store-img-wrap { height: 170px; }
+}

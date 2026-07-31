@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Mon panier - AirWoodClim{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="mb-4">Mon panier</h1>
+
+    {% if cart|length == 0 %}
+        <p class="text-muted">Votre panier est vide.</p>
+        <a href="{% url 'catalog:climatiseurs' %}" class="btn btn-awc text-white">Voir les climatiseurs</a>
+    {% else %}
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Prix</th>
+                    <th>Quantite</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart %}
+                <tr>
+                    <td class="d-flex align-items-center gap-2">
+                        {% if item.product.image %}
+                        <img src="{{ item.product.image.url }}" width="55" height="55" style="object-fit:cover;border-radius:8px;">
+                        {% endif %}
+                        {{ item.product.name }}
+                    </td>
+                    <td>{{ item.price }} DH</td>
+                    <td>
+                        <form action="{% url 'cart:cart_add' item.product.id %}" method="post" class="d-flex gap-1">
+                            {% csrf_token %}
+                            <input type="hidden" name="override_quantity" value="true">
+                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control form-control-sm" style="width: 70px;">
+                            <button type="submit" class="btn btn-sm btn-outline-awc">Mettre a jour</button>
+                        </form>
+                    </td>
+                    <td class="price-tag">{{ item.total_price }} DH</td>
+                    <td>
+                        <a href="{% url 'cart:cart_remove' item.product.id %}" class="btn btn-sm btn-outline-danger">Retirer</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-end">
+        <h4>Total : <span class="price-tag">{{ cart.get_total_price }} DH</span></h4>
+        <a href="{% url 'orders:checkout' %}" class="btn btn-awc text-white btn-lg mt-2">Passer la commande</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ product.name }} - AirWoodClim{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row g-5">
+        <div class="col-md-5">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="img-fluid rounded shadow-sm" alt="{{ product.name }}">
+            {% else %}
+            <img src="{% static 'images/logo.png' %}" class="img-fluid rounded shadow-sm" alt="{{ product.name }}">
+            {% endif %}
+        </div>
+        <div class="col-md-7">
+            <h1>{{ product.name }}</h1>
+            {% if product.brand %}<p class="text-muted">Marque : {{ product.brand }}</p>{% endif %}
+            {% if product.capacity_btu %}<p class="text-muted">Capacite : {{ product.capacity_btu }} BTU</p>{% endif %}
+            <p class="price-tag fs-3">{{ product.price }} DH</p>
+            <p>{{ product.description|linebreaks }}</p>
+
+            <form action="{% url 'cart:cart_add' product.id %}" method="post" class="d-flex align-items-center gap-2">
+                {% csrf_token %}
+                <input type="number" name="quantity" value="1" min="1" class="form-control" style="width: 90px;">
+                <button type="submit" class="btn btn-awc text-white btn-lg">Ajouter au panier</button>
+            </form>
+        </div>
+    </div>
+</div>
+<form action="{% url 'cart:cart_add' product.id %}" method="post" class="d-flex align-items-center gap-2">
+                {% csrf_token %}
+                <input type="number" name="quantity" value="1" min="1" class="form-control" style="width: 90px;">
+                <button type="submit" class="btn btn-awc text-white btn-lg">Ajouter au panier</button>
+            </form>
+
+            {% if product.category.type == 'service' %}
+            <a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Salut, je veux des informations sur une installation : '|add:product.name|urlencode }}"
+               target="_blank"
+               class="btn btn-whatsapp btn-lg w-100 mt-3 text-white">
+                💬 Demander via WhatsApp
+            </a>
+            {% endif %}
+{% endblock %}
