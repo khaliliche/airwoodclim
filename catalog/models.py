@@ -35,6 +35,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/', blank=True, null=True)
     description = models.TextField(blank=True)
     is_active = models.BooleanField(default=True)
+    is_featured = models.BooleanField(default=False, verbose_name="Populaire", help_text="Coché = affiché dans 'Nos climatiseurs populaires' sur la page d'accueil")
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

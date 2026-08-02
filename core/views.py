@@ -15,7 +15,7 @@ def home(request):
     else:
         form = TestimonialForm()
 
-    climatiseurs = Product.objects.filter(category__type='climatiseur', is_active=True)[:4]
+    climatiseurs = Product.objects.filter(category__type='climatiseur', is_active=True, is_featured=True)[:8]
     services = Product.objects.filter(category__type='service', is_active=True)[:4]
     work_photos = WorkPhoto.objects.filter(is_active=True)[:8]
     testimonials = Testimonial.objects.filter(is_approved=True)[:9]
