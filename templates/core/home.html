@@ -139,7 +139,61 @@
         {% endfor %}
     </div>
 </div>
+<!-- TESTIMONIALS -->
+<div class="container my-5 py-3">
+    <div class="section-head">
+        <span class="eyebrow">Avis clients</span>
+        <h2>Ce que nos clients disent</h2>
+        <div class="rule"></div>
+    </div>
 
+    {% if testimonials %}
+    <div class="row g-4 mb-5">
+        {% for t in testimonials %}
+        <div class="col-md-6 col-lg-4">
+            <div class="testimonial-card">
+                <div class="stars">
+                    {% for i in "12345" %}
+                        {% if forloop.counter <= t.rating %}
+                        <i class="fas fa-star"></i>
+                        {% else %}
+                        <i class="far fa-star"></i>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <p class="testimonial-comment">{{ t.comment }}</p>
+                <p class="testimonial-name">— {{ t.name }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="testimonial-form-wrap">
+        <h5 class="mb-3">Laissez votre avis</h5>
+        <form method="post" action="{% url 'core:home' %}#avis">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">{{ testimonial_form.name.label }}</label>
+                {{ testimonial_form.name }}
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Votre note</label>
+                <div class="star-rating">
+                    {% for radio in testimonial_form.rating %}
+                        {{ radio.tag }}
+                        <label for="{{ radio.id_for_label }}"><i class="fas fa-star"></i></label>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">{{ testimonial_form.comment.label }}</label>
+                {{ testimonial_form.comment }}
+            </div>
+            <button type="submit" class="btn btn-awc text-white">Envoyer mon avis</button>
+        </form>
+    </div>
+</div>
 <!-- BRANDS -->
 <section class="section-alt py-5">
     <div class="container text-center">
