@@ -151,7 +151,7 @@ h1, h2, h3, h4, .display {
 ========================== */
 .hero-section {
   position: relative;
-  background: var(--navy);
+  background: var(--navy) url('../images/hero-bg.jpg') center center / cover no-repeat;
   color: #fff;
   padding: 100px 0 140px;
   overflow: hidden;
@@ -163,7 +163,7 @@ h1, h2, h3, h4, .display {
   inset: 0;
   background: linear-gradient(115deg, var(--navy) 45%, var(--cyan) 130%);
   clip-path: polygon(0 0, 100% 0, 100% 55%, 0 100%);
-  opacity: 0.9;
+  opacity: 0.75;
 }
 
 .hero-inner { position: relative; z-index: 2; max-width: 640px; }
