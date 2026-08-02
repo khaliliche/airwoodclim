@@ -90,7 +90,24 @@
         </div>
     </div>
 </section>
-
+<!-- WORK GALLERY -->
+{% if work_photos %}
+<div class="container my-5 py-3">
+    <div class="section-head">
+        <span class="eyebrow">Nos réalisations</span>
+        <h2>Des installations faites par nos équipes</h2>
+        <div class="rule"></div>
+    </div>
+    <div class="gallery-grid">
+        {% for photo in work_photos %}
+        <a href="{{ photo.image.url }}" target="_blank" class="gallery-item">
+            <img src="{{ photo.image.url }}" alt="{{ photo.caption|default:'Réalisation Air Wood Clim' }}" loading="lazy">
+            {% if photo.caption %}<span class="gallery-caption">{{ photo.caption }}</span>{% endif %}
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
 <!-- SERVICES -->
 <div class="container my-5 py-3">
     <div class="section-head">
