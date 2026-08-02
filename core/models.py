@@ -16,7 +16,7 @@ class WorkPhoto(models.Model):
 
 
 class Testimonial(models.Model):
-    RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]
+    RATING_CHOICES = [(i, str(i)) for i in range(5, 0, -1)]
 
     name = models.CharField(max_length=100, verbose_name="Nom")
     rating = models.PositiveSmallIntegerField(choices=RATING_CHOICES, default=5, verbose_name="Note")
