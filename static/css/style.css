@@ -98,7 +98,21 @@ h1, h2, h3, h4, .display {
   border-radius: 50%;
   font-size: 0.65rem;
   padding: 3px 6px;
-  font-family: var(--font-mono);
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 16px 30px rgba(15, 42, 71, 0.18);
+    padding: 12px 20px 20px;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    z-index: 1050;
+  }
 }
 
 /* ==========================
